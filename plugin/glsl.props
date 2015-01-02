@@ -28,7 +28,7 @@
 			<CommandLineTemplate Condition="'$(PROCESSOR_ARCHITECTURE)' != 'AMD64' AND '$(PROCESSOR_ARCHITEW6432)' != 'AMD64'">$(MSBuildThisFileDirectory)stripcomments.exe [Inputs] [AllOptions] [AdditionalOptions]</CommandLineTemplate>
 			
 			<!-- Line to print in Visual Studio's output -->
-			<ExecutionDescription>%(FileName)%(Extension)</ExecutionDescription>
+			<ExecutionDescription>Stripcomments %(FileName)%(Extension)...</ExecutionDescription>
 		</GLSL>
 	</ItemDefinitionGroup>
 </Project>
