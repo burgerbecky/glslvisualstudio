@@ -24,8 +24,8 @@
 			<ObjectFileName>%(RootDir)%(Directory)%(FileName).h</ObjectFileName>
 
 			<!-- Decide if the 64 bit version or the 32 bit version of the tool should be executed -->
-			<CommandLineTemplate Condition="'$(PROCESSOR_ARCHITECTURE)' == 'AMD64' OR '$(PROCESSOR_ARCHITEW6432)' == 'AMD64'">$(MSBuildThisFileDirectory)stripcomments64.exe [Inputs] [AllOptions] [AdditionalOptions]</CommandLineTemplate>
-			<CommandLineTemplate Condition="'$(PROCESSOR_ARCHITECTURE)' != 'AMD64' AND '$(PROCESSOR_ARCHITEW6432)' != 'AMD64'">$(MSBuildThisFileDirectory)stripcomments.exe [Inputs] [AllOptions] [AdditionalOptions]</CommandLineTemplate>
+			<CommandLineTemplate Condition="'$(PROCESSOR_ARCHITECTURE)' == 'AMD64' OR '$(PROCESSOR_ARCHITEW6432)' == 'AMD64'">"$(MSBuildThisFileDirectory)..\x64\stripcomments.exe" [Inputs] [AllOptions] [AdditionalOptions]</CommandLineTemplate>
+			<CommandLineTemplate Condition="'$(PROCESSOR_ARCHITECTURE)' != 'AMD64' AND '$(PROCESSOR_ARCHITEW6432)' != 'AMD64'">"$(MSBuildThisFileDirectory)..\stripcomments.exe" [Inputs] [AllOptions] [AdditionalOptions]</CommandLineTemplate>
 			
 			<!-- Line to print in Visual Studio's output -->
 			<ExecutionDescription>Stripcomments %(FileName)%(Extension)...</ExecutionDescription>
