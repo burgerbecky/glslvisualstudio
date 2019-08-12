@@ -33,7 +33,7 @@ static const char g_GenerationHeader[] =
 ***************************************/
 
 void BURGER_API StripComments(
-    OutputMemoryStream* pOutput, const char* pInput, WordPtr uLength)
+    OutputMemoryStream* pOutput, const char* pInput, uintptr_t uLength)
 {
     enum eState {
         REMOVING_WHITESPACE,
@@ -46,14 +46,14 @@ void BURGER_API StripComments(
 
     if (uLength) {
         // Not in an active quote
-        Word uQuoteCharacter = 0;
+        uint_t uQuoteCharacter = 0;
         // Remove whitespace from the start of a line
         eState eCurrentState = REMOVING_WHITESPACE;
         eState eOldAsteriskState = REMOVING_WHITESPACE;
-        Word uCharacter;
+        uint_t uCharacter;
         do {
             // Pull out a character
-            uCharacter = reinterpret_cast<const Word8*>(pInput)[0];
+            uCharacter = reinterpret_cast<const uint8_t*>(pInput)[0];
             --uLength;
             ++pInput;
             // Process according to the current state
@@ -67,13 +67,13 @@ void BURGER_API StripComments(
                     break;
                 }
                 if ((uCharacter == '/') && (uLength)) {
-                    if (reinterpret_cast<const Word8*>(pInput)[0] == '/') {
+                    if (reinterpret_cast<const uint8_t*>(pInput)[0] == '/') {
                         --uLength;
                         ++pInput;
                         eCurrentState = SLASH_COMMENT;
                         break;
                     }
-                    if (reinterpret_cast<const Word8*>(pInput)[0] == '*') {
+                    if (reinterpret_cast<const uint8_t*>(pInput)[0] == '*') {
                         ++pInput;
                         --uLength;
                         eCurrentState = ASTERISK_COMMENT;
@@ -96,7 +96,8 @@ void BURGER_API StripComments(
                 if (uCharacter == '\\') {
                     if (uLength) {
                         pOutput->Append('\\');
-                        uCharacter = reinterpret_cast<const Word8*>(pInput)[0];
+                        uCharacter =
+                            reinterpret_cast<const uint8_t*>(pInput)[0];
                         --uLength;
                         ++pInput;
                     }
@@ -109,7 +110,7 @@ void BURGER_API StripComments(
                 // Is this an end of line?
                 if (uCharacter == '\r') {
                     if (uLength &&
-                        reinterpret_cast<const Word8*>(pInput)[0] == '\n') {
+                        reinterpret_cast<const uint8_t*>(pInput)[0] == '\n') {
                         ++pInput;
                         --uLength;
                     }
@@ -122,14 +123,16 @@ void BURGER_API StripComments(
                 }
                 if (uCharacter == '/') {
                     if (uLength) {
-                        if (reinterpret_cast<const Word8*>(pInput)[0] == '/') {
+                        if (reinterpret_cast<const uint8_t*>(pInput)[0] ==
+                            '/') {
                             ++pInput;
                             --uLength;
                             eCurrentState = SLASH_COMMENT;
                             pOutput->Append('\n');
                             break;
                         }
-                        if (reinterpret_cast<const Word8*>(pInput)[0] == '*') {
+                        if (reinterpret_cast<const uint8_t*>(pInput)[0] ==
+                            '*') {
                             ++pInput;
                             --uLength;
                             eCurrentState = ASTERISK_COMMENT;
@@ -153,14 +156,14 @@ void BURGER_API StripComments(
                     break;
                 }
                 if ((uCharacter == '/') && (uLength)) {
-                    if (reinterpret_cast<const Word8*>(pInput)[0] == '/') {
+                    if (reinterpret_cast<const uint8_t*>(pInput)[0] == '/') {
                         --uLength;
                         ++pInput;
                         pOutput->Append('\n');
                         eCurrentState = SLASH_COMMENT;
                         break;
                     }
-                    if (reinterpret_cast<const Word8*>(pInput)[0] == '*') {
+                    if (reinterpret_cast<const uint8_t*>(pInput)[0] == '*') {
                         ++pInput;
                         --uLength;
                         eCurrentState = ASTERISK_COMMENT;
@@ -183,7 +186,8 @@ void BURGER_API StripComments(
                 if (uCharacter == '\\') {
                     if (uLength) {
                         pOutput->Append('\\');
-                        uCharacter = reinterpret_cast<const Word8*>(pInput)[0];
+                        uCharacter =
+                            reinterpret_cast<const uint8_t*>(pInput)[0];
                         --uLength;
                         ++pInput;
                     }
@@ -191,7 +195,7 @@ void BURGER_API StripComments(
                 // Is this an end of line?
                 if (uCharacter == '\r') {
                     if (uLength &&
-                        reinterpret_cast<const Word8*>(pInput)[0] == '\n') {
+                        reinterpret_cast<const uint8_t*>(pInput)[0] == '\n') {
                         ++pInput;
                         --uLength;
                     }
@@ -205,7 +209,7 @@ void BURGER_API StripComments(
             case ASTERISK_COMMENT:
                 if (uCharacter == '*') {
                     if (uLength &&
-                        reinterpret_cast<const Word8*>(pInput)[0] == '/') {
+                        reinterpret_cast<const uint8_t*>(pInput)[0] == '/') {
                         ++pInput;
                         --uLength;
                         eCurrentState = eOldAsteriskState;
@@ -223,11 +227,12 @@ void BURGER_API StripComments(
                     // condition. Thankfully, visual studio issues a warning for
                     // source containing this case
                     if (uLength) {
-                        if (reinterpret_cast<const Word8*>(pInput)[0] == '\r') {
+                        if (reinterpret_cast<const uint8_t*>(pInput)[0] ==
+                            '\r') {
                             ++pInput;
                             --uLength;
                             if (uLength &&
-                                reinterpret_cast<const Word8*>(pInput)[0] ==
+                                reinterpret_cast<const uint8_t*>(pInput)[0] ==
                                     '\n') {
                                 ++pInput;
                                 --uLength;
@@ -236,7 +241,8 @@ void BURGER_API StripComments(
                             break;
                         }
 
-                        if (reinterpret_cast<const Word8*>(pInput)[0] == '\n') {
+                        if (reinterpret_cast<const uint8_t*>(pInput)[0] ==
+                            '\n') {
                             ++pInput;
                             --uLength;
                             // Stay in the // comment mode
@@ -250,7 +256,7 @@ void BURGER_API StripComments(
                 // Time to stop discarding text?
                 if (uCharacter == '\r') {
                     if (uLength &&
-                        reinterpret_cast<const Word8*>(pInput)[0] == '\n') {
+                        reinterpret_cast<const uint8_t*>(pInput)[0] == '\n') {
                         ++pInput;
                         --uLength;
                     }
@@ -285,7 +291,7 @@ int BURGER_ANSIAPI main(int argc, const char** argv)
     const CommandParameter* MyParms[] = {&CPP, &Label};
     argv = MyApp.GetArgv();
     argc = CommandParameter::Process(MyApp.GetArgc(), argv, MyParms,
-        sizeof(MyParms) / sizeof(MyParms[0]),
+        BURGER_ARRAYSIZE(MyParms),
         "Usage: stripcomments InputFile [Outputfile]\n\n"
         "This will strip C++ style comments from a source file.\n"
         "Copyright Rebecca Ann Heineman.\n",
@@ -295,7 +301,7 @@ int BURGER_ANSIAPI main(int argc, const char** argv)
         MyApp.SetArgc(argc);
         Filename InputFilename;
         InputFilename.SetFromNative(argv[1]);
-        WordPtr uLength;
+        uintptr_t uLength;
         const char* pInputBuffer = static_cast<const char*>(
             FileManager::LoadFile(&InputFilename, &uLength));
 
@@ -343,18 +349,19 @@ int BURGER_ANSIAPI main(int argc, const char** argv)
                     Output.Append("\"\"");
                 } else {
                     const char* pWork = pInputBuffer;
-                    Word bQuoted = FALSE;
+                    uint_t bQuoted = FALSE;
                     do {
                         if (!bQuoted) {
                             Output.Append("\n\"");
                             bQuoted = TRUE;
                         }
-                        Word uTemp = reinterpret_cast<const Word8*>(pWork)[0];
+                        uint_t uTemp =
+                            reinterpret_cast<const uint8_t*>(pWork)[0];
                         ++pWork;
                         --uLength;
                         if (uTemp == '\r') {
                             if (uLength &&
-                                reinterpret_cast<const Word8*>(pWork)[0] ==
+                                reinterpret_cast<const uint8_t*>(pWork)[0] ==
                                     '\n') {
                                 ++pWork;
                                 --uLength;
@@ -383,7 +390,7 @@ int BURGER_ANSIAPI main(int argc, const char** argv)
 
             // Save the text file to disk
 
-            Word uResult = Output.SaveFile(&OutputFilename);
+            uint_t uResult = Output.SaveFile(&OutputFilename);
             if (uResult) {
                 printf("Error in saving %s\n", OutputFilename.GetNative());
             }

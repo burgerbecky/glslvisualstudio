@@ -22,7 +22,7 @@
 #endif
 
 extern void BURGER_API StripComments(
-    OutputMemoryStream* pOutput, const char* pInput, WordPtr uLength);
+    OutputMemoryStream* pOutput, const char* pInput, uintptr_t uLength);
 extern int BURGER_ANSIAPI main(int argc, const char** argv);
 
 #endif
