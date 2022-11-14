@@ -2,8 +2,8 @@
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
         <Identity Id="glsl2019.burgerbecky.8f8bc28c-9c83-4833-b773-e348a83118fb" Version="1.0.3" Language="en-US" Publisher="Rebecca Ann Heineman" />
-        <DisplayName>GLSL Visual Studio 2019+ comment stripper</DisplayName>
-        <Description xml:space="preserve">This is a plug in for Visual Studio 2019 or higher that will allow files with the GLSL extension to automatically be compiled with a tool that will strip all comments. The tool will be listed as "Comment stripper tool". Versions compatible with earlier versions of Visual Studio can be found here: https://github.com/burgerbecky/glslvisualstudio</Description>
+        <DisplayName>GLSL Visual Studio 2019 comment stripper</DisplayName>
+        <Description xml:space="preserve">This is a plug in for Visual Studio 2019 that will allow files with the GLSL extension to automatically be compiled with a tool that will strip all comments. The tool will be listed as "Comment stripper tool". Versions compatible with earlier versions of Visual Studio can be found here: https://github.com/burgerbecky/glslvisualstudio</Description>
         <MoreInfo>https://github.com/burgerbecky/glslvisualstudio</MoreInfo>
         <GettingStartedGuide>https://github.com/burgerbecky/glslvisualstudio/blob/master/README.md</GettingStartedGuide>
         <Icon>Resources\burgericon.png</Icon>

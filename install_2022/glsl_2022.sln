@@ -1,17 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.28803.452
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "glsl_2019", "glsl_2019.csproj", "{E393C2D1-EF52-4E70-8EAB-A50C0406622E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "glsl_2022", "glsl_2022.csproj", "{729CEEB5-D903-41D2-8808-3A2E5C99806C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{E393C2D1-EF52-4E70-8EAB-A50C0406622E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E393C2D1-EF52-4E70-8EAB-A50C0406622E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{729CEEB5-D903-41D2-8808-3A2E5C99806C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{729CEEB5-D903-41D2-8808-3A2E5C99806C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

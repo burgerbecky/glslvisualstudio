@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
+    <Metadata>
+        <Identity Id="glsl2022.burgerbecky.a8b42d54-7173-4c99-b0b0-bc76ea42ca3e" Version="1.0.3" Language="en-US" Publisher="Rebecca Ann Heineman" />
+        <DisplayName>GLSL Visual Studio 2022 comment stripper</DisplayName>
+        <Description xml:space="preserve">This is a plug in for Visual Studio 2022 that will allow files with the GLSL extension to automatically be compiled with a tool that will strip all comments. The tool will be listed as "Comment stripper tool". Versions compatible with earlier versions of Visual Studio can be found here: https://github.com/burgerbecky/glslvisualstudio</Description>
+        <MoreInfo>https://github.com/burgerbecky/glslvisualstudio</MoreInfo>
+        <GettingStartedGuide>https://github.com/burgerbecky/glslvisualstudio/blob/master/README.md</GettingStartedGuide>
+        <Icon>Resources\burgericon.png</Icon>
+        <PreviewImage>Resources\burgericon.png</PreviewImage>
+        <Tags>opengl, glsl, directx, fxc, shader, build, buildcustomizations, compiler, game, graphics</Tags>
+    </Metadata>
+    <Installation AllUsers="true">
+        <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[17.0,18.0)">
+            <ProductArchitecture>x86</ProductArchitecture>
+        </InstallationTarget>
+        <InstallationTarget Version="[17.0,18.0)" Id="Microsoft.VisualStudio.Pro">
+            <ProductArchitecture>x86</ProductArchitecture>
+        </InstallationTarget>
+        <InstallationTarget Version="[17.0,18.0)" Id="Microsoft.VisualStudio.Enterprise">
+            <ProductArchitecture>x86</ProductArchitecture>
+        </InstallationTarget>
+        <InstallationTarget Version="[17.0,18.0)" Id="Microsoft.VisualStudio.IntegratedShell">
+            <ProductArchitecture>x86</ProductArchitecture>
+        </InstallationTarget>
+        <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[17.0,18.0)">
+            <ProductArchitecture>amd64</ProductArchitecture>
+        </InstallationTarget>
+        <InstallationTarget Version="[17.0,18.0)" Id="Microsoft.VisualStudio.Pro">
+            <ProductArchitecture>amd64</ProductArchitecture>
+        </InstallationTarget>
+        <InstallationTarget Version="[17.0,18.0)" Id="Microsoft.VisualStudio.Enterprise">
+            <ProductArchitecture>amd64</ProductArchitecture>
+        </InstallationTarget>
+        <InstallationTarget Version="[17.0,18.0)" Id="Microsoft.VisualStudio.IntegratedShell">
+            <ProductArchitecture>amd64</ProductArchitecture>
+        </InstallationTarget>        
+    </Installation>
+    <Prerequisites>
+        <Prerequisite Id="Microsoft.VisualStudio.Component.CoreEditor" Version="[17.0,18.0)" DisplayName="Visual Studio core editor" />
+    </Prerequisites>
+</PackageManifest>

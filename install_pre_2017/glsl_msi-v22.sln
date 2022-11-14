@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29009.5
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32210.238
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "GLSL Visual Studio Integration", "glsl_msi-v19.vdproj", "{FCCA1D3C-1008-4F2F-BBA7-C319BBAE6F89}"
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "GLSL Visual Studio Integration", "glsl_msi-v22.vdproj", "{FCCA1D3C-1008-4F2F-BBA7-C319BBAE6F89}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
