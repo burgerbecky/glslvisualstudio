@@ -46,7 +46,7 @@ Insert this after it.
 
 The source code to the tool is in the folder "source". It will require Burgerlib for some subroutines. <https://github.com/Olde-Skuul/KitchenSink> has the binaries of the library and <https://github.com/Olde-Skuul/burgerlib> has the source to the library.
 
-## To build the tool
+## To build the tool on windows
 
 1. Install Visual Studio 2022
 2. Install the Visual Studio SDK
@@ -58,3 +58,14 @@ The source code to the tool is in the folder "source". It will require Burgerlib
 8. Ensure python scripts are in the PATH so python scripts can be run from the command line
 9. Set the directory to the folder these instructions reside, usually "GLSL"
 10. buildme
+
+## To build the tool on macOS for Xcode
+
+1. Install XCode
+2. Install Python (Prefer 3 using brew or macports)
+3. pip install makeprojects
+4. Ensure python scripts are in the PATH so python scripts can be run from the terminal
+5. Set the directory to the folder "stripcomments"
+6. buildme
+7. Rename the executable in the bin folder to "stripcomments"
+8. move the tool into the folder that contains tools, /opt/local/bin is an example
