@@ -4,7 +4,7 @@
 """
 Copy the GLSL visual studio plugin to sdks/visualstudio
 
-Copyright 1995-2014 by Rebecca Ann Heineman becky@burgerbecky.com
+Copyright 1995-2022 by Rebecca Ann Heineman becky@burgerbecky.com
 
 It is released under an MIT Open Source license. Please see LICENSE
 for license details. Yes, you can use it in a
@@ -16,52 +16,46 @@ from __future__ import absolute_import, unicode_literals
 
 import os
 import sys
-import subprocess
-import burger
+from burger import clean_directories, clean_files
 
-# Unused arguments
-# pylint: disable=W0613
+# ``cleanme`` will process any child directory with the clean() function if
+# True.
+CLEANME_GENERIC = True
+
+# ``cleanme`` will assume only the function ``clean()`` is used if True.
+CLEANME_PROCESS_PROJECT_FILES = False
+
+# Process listed folders using their rules before processing this folder.
+DEPENDENCIES = ['stripcomments', 'install_pre_2017', 'install_2017',
+    'install_2019', 'install_2022']
+
+########################################
 
 
-def rules(command, working_directory=None, root=True, **kargs):
+def clean(working_directory):
     """
-    Main entry point for build_rules.py.
+    Delete temporary files.
 
-    When ``makeprojects``, ``cleanme``, or ``buildme`` is executed, they will
-    call this function to perform the actions required for build customization.
+    This function is called by ``cleanme`` to remove temporary files.
 
-    The parameter ``working_directory`` is required, and if it has no default
-    parameter, this function will only be called with the folder that this
-    file resides in. If there is a default parameter of ``None``, it will be
-    called with any folder that it is invoked on. If the default parameter is a
-    directory, this function will only be called if that directory is desired.
+    On exit, return 0 for no error, or a non zero error code if there was an
+    error to report.
 
-    The optional parameter of ``root``` alerts the tool if subsequent processing
-    of other ``build_rules.py`` files are needed or if set to have a default
-    parameter of ``True``, processing will end once the calls to this
-    ``rules()`` function are completed.
+    Args:
+        working_directory
+            Directory this script resides in.
 
-    Commands are 'build', 'clean', 'prebuild', 'postbuild', 'project',
-    'configurations'
-
-    Arg:
-        command: Command to execute.
-        working_directory: Directory for this function to operate on.
-        root: If True, stop execution upon completion of this function
-        kargs: Extra arguments specific to each command.
-    Return:
-        Zero on no error or no action.
+    Returns:
+        None if not implemented, otherwise an integer error code.
     """
 
-    if command == 'clean':
-        burger.clean_directories(
-            working_directory,
-            ('bin', 'temp', 'obj', 'Properties', '.vs', '.vscode'))
-        burger.clean_files(working_directory, ('Key.snk', '*.user', '*.suo'))
-
+    clean_directories(
+        working_directory,
+        ('bin', 'temp', 'obj', 'Properties', '.vs', '.vscode'))
+    clean_files(working_directory, ('Key.snk', '*.user', '*.suo'))
     return 0
 
 
 # If called as a command line and not a class, perform the build
 if __name__ == "__main__":
-    sys.exit(rules('build', os.path.dirname(os.path.abspath(__file__))))
+    sys.exit(clean(os.path.dirname(os.path.abspath(__file__))))
