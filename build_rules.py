@@ -52,7 +52,8 @@ def clean(working_directory):
     clean_directories(
         working_directory,
         ('bin', 'temp', 'obj', 'Properties', '.vs', '.vscode', 'build'))
-    clean_files(working_directory, ('Key.snk', '*.user', '*.suo'))
+    clean_files(working_directory,
+        ('Key.snk', '*.user', '*.suo', '*.msi'), True)
     return 0
 
 
